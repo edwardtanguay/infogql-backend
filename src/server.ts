@@ -4,7 +4,7 @@ import cors from "cors";
 import { employeeRouter } from "./routers/employeeRouter";
 import dotenv from "dotenv";
 import { graphqlHTTP } from "express-graphql";
-import schema from "../data/schema";
+import schema from "./schemas/mainSchema";
 
 dotenv.config();
 
@@ -25,7 +25,16 @@ app.get("/", (req, res) => {
 	`);
 });
 
-const root = { siteTitle: () => "InfoGQL - GraphQL Showcase" };
+const root = {
+	siteTitle: () => "InfoGQL - GraphQL Showcase",
+	skill: {
+		idCode: "angular",
+		name: "Angular",
+		url: "https://onespace.pages.dev/techItems?id=36",
+		description:
+			"together with React and Vue.js one of the three most popular JavaScript frameworks",
+	},
+};
 
 app.use(
 	"/graphql",
