@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import express from 'express';
-import cors from 'cors';
-import { employeeRouter } from './routers/employeeRouter';
-import dotenv from 'dotenv';
+import express from "express";
+import cors from "cors";
+import { employeeRouter } from "./routers/employeeRouter";
+import dotenv from "dotenv";
+import { graphqlHTTP } from "express-graphql";
+import schema from "../data/schema";
 
 dotenv.config();
 
@@ -10,7 +12,7 @@ export const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
 	res.send(`
 <html>
 	<body>
@@ -20,8 +22,18 @@ app.get('/', (req, res) => {
 	</ul>
 	</body>
 </html>
-	`)
-
+	`);
 });
 
-app.use('/employees', employeeRouter);
+const root = { siteTitle: () => "InfoGQL - GraphQL Showcase" };
+
+app.use(
+	"/graphql",
+	graphqlHTTP({
+		schema,
+		rootValue: root,
+		graphiql: true,
+	})
+);
+
+app.use("/employees", employeeRouter);
