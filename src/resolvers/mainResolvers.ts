@@ -35,6 +35,14 @@ const resolvers = {
 		return new Product(id, input);
 	},
 	frameworks: getFrameworks(),
+	getFramework: ({ id }) => {
+		return 	{
+		"id": id,
+		"name": "MOCK Angular",
+		"yearCreated": 2010,
+		"language": "TypeScript"
+	}
+	}
 };
 
 export default resolvers;

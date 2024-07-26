@@ -14,6 +14,7 @@ const schema = buildSchema(`
 		skills: [Skill]
 		getProduct(id: ID): Product
         frameworks: [Framework]
+		getFramework(id: ID): Framework
 	}
 
 	type Product {
@@ -52,6 +53,8 @@ const schema = buildSchema(`
         yearCreated: Int
         language: String
 	}
+
+	
 `);
 
 export default schema;
