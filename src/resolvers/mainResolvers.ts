@@ -1,4 +1,4 @@
-import { getFrameworks } from "../models/frameworkModel";
+import { getFramework, getFrameworks } from "../models/frameworkModel";
 import { getSkills } from "../models/skillModel";
 import * as tools from "../tools";
 
@@ -35,14 +35,7 @@ const resolvers = {
 		return new Product(id, input);
 	},
 	frameworks: getFrameworks(),
-	getFramework: ({ id }) => {
-		return 	{
-		"id": id,
-		"name": "MOCK Angular",
-		"yearCreated": 2010,
-		"language": "TypeScript"
-	}
-	}
+	getFramework
 };
 
 export default resolvers;
