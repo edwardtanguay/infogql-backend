@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import express from "express";
 import cors from "cors";
-import { employeeRouter } from "./routers/employeeRouter";
 import dotenv from "dotenv";
 import { graphqlHTTP } from "express-graphql";
 import schema from "./schemas/mainSchemas";
@@ -36,5 +35,3 @@ app.use(
 		graphiql: true,
 	})
 );
-
-app.use("/employees", employeeRouter);
