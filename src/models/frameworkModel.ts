@@ -9,10 +9,11 @@ export const getFrameworks = (): Framework[] => {
 };
 
 export const getFramework = ({ id }): Framework => {
-	return {
-		id: id,
-		name: "MOCK2222333 Angular",
-		yearCreated: 2010,
-		language: "TypeScript",
-	};
+	const frameworks = getFrameworks();
+	const framework = frameworks.find(m => m.id === id);
+	if (framework) {
+		return framework;
+	} else {
+		throw new Error(`framework not found: ${id}`)
+	}
 };
