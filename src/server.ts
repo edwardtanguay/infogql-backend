@@ -4,8 +4,8 @@ import cors from "cors";
 import { employeeRouter } from "./routers/employeeRouter";
 import dotenv from "dotenv";
 import { graphqlHTTP } from "express-graphql";
-import schema from "./schemas/mainSchema";
-import resolvers from "./resolvers/resolvers";
+import schema from "./schemas/mainSchemas";
+import resolvers from "./resolvers/mainResolvers";
 
 dotenv.config();
 

@@ -1,5 +1,6 @@
-import { getSkills } from '../models/skillModel';
-import * as tools from '../tools'
+import { getFrameworks } from "../models/frameworkModel";
+import { getSkills } from "../models/skillModel";
+import * as tools from "../tools";
 
 class Product {
 	id: string;
@@ -29,10 +30,11 @@ const resolvers = {
 		return new Product(id, productDatabase[id]);
 	},
 	createProduct: ({ input }) => {
-		const id = tools.generateShortUUID()
+		const id = tools.generateShortUUID();
 		productDatabase[id] = input;
 		return new Product(id, input);
 	},
+	frameworks: getFrameworks(),
 };
 
 export default resolvers;
