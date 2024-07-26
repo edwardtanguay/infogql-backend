@@ -1,9 +1,11 @@
 import { Framework, InputFramework } from "../types";
 import * as tools from "../tools";
 
+const frameworkPathAndFileName = "./src/data/frameworks.json";
+
 export const getFrameworks = (): Framework[] => {
 	const frameworks: Framework[] = tools.readJsonFile(
-		"./src/data/frameworks.json"
+		frameworkPathAndFileName
 	);
 	return frameworks;
 };
@@ -23,11 +25,12 @@ export const createFramework = ({
 }: {
 	input: InputFramework;
 }): Framework => {
-	console.log("adding: " + JSON.stringify(input, null, 2));
-	return {
-		id: "8uz21b",
-		name: "MOCK Vue",
-		yearCreated: 2014,
-		language: "JavaScript",
-	};
+	const frameworks = getFrameworks();
+	const newFramework = {
+		id: tools.generateShortUUID(),
+		...input
+	}
+frameworks.push(newFramework)	
+	tools.writeArrayOfObjectsToJsonFile(frameworks,frameworkPathAndFileName)
+	return newFramework;
 };
