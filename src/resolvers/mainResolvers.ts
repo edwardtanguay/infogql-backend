@@ -1,4 +1,4 @@
-import { getFramework, getFrameworks } from "../models/frameworkModel";
+import { createFramework, getFramework, getFrameworks } from "../models/frameworkModel";
 import { getSkills } from "../models/skillModel";
 import * as tools from "../tools";
 
@@ -35,7 +35,8 @@ const resolvers = {
 		return new Product(id, input);
 	},
 	frameworks: getFrameworks(),
-	getFramework
+	getFramework,
+	createFramework
 };
 
 export default resolvers;

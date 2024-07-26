@@ -11,3 +11,9 @@ export type Framework = {
 	yearCreated: number;
 	language: string;
 }
+
+export type InputFramework = {
+	name: string;
+	yearCreated: number;
+	language: string;
+}

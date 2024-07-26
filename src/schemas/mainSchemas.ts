@@ -45,6 +45,13 @@ const schema = buildSchema(`
 
 	type Mutation {
 		createProduct(input: ProductInput): Product
+		createFramework(input: InputFramework): Framework
+	}
+
+	input InputFramework {
+        name: String
+        yearCreated: Int
+        language: String
 	}
 
 	type Framework {
@@ -53,8 +60,6 @@ const schema = buildSchema(`
         yearCreated: Int
         language: String
 	}
-
-	
 `);
 
 export default schema;
